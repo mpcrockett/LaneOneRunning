@@ -1,9 +1,21 @@
-import Menu from './components/Menu/Menu'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useLoaderData,
+} from "react-router-dom";
+import Home, { homeLoader } from "./pages/Home";
+
+let router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    loader: homeLoader,
+
+  }
+])
 
 function App() {
-  return (
-    <Menu />
-  )
+  return <RouterProvider router={router} />
 }
 
-export default App
+export default App;
