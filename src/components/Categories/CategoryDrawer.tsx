@@ -1,8 +1,15 @@
 import { Box } from '@chakra-ui/react';
 
-function CategoryDrawer() {
+interface Props {
+  selectedTab: string
+}
+
+function CategoryDrawer(props: Props) {
+  const { selectedTab } = props; 
+   
   return (
     <Box
+  
       width="100%"
       bg="brand.cream.50"
       display="flex"

@@ -1,7 +1,6 @@
 import {
   createBrowserRouter,
   RouterProvider,
-  useLoaderData,
 } from "react-router-dom";
 import Home, { homeLoader } from "./pages/Home";
 
