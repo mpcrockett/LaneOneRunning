@@ -4,7 +4,7 @@ import Cart from "../Cart/Cart";
 import Search from "./Search";
 
 interface Props {
-  setSelectedTab: React.Dispatch<React.SetStateAction<string>>,
+  setSelectedTab: React.Dispatch<React.SetStateAction<string | null>>,
 }
 
 function NavBar(props: Props) {

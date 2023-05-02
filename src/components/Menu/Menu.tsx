@@ -1,15 +1,20 @@
 import { Box } from "@chakra-ui/react"
 import NavBar from "../NavBar/NavBar"
 import CategoryDrawer from "../Categories/CategoryDrawer"
-import { useState } from "react";
+import { RefObject, useRef, useState } from "react";
 
 function Menu() {
-  const [selectedTab, setSelectedTab] = useState('');
+  const [selectedTab, setSelectedTab] = useState<null | string>(null);
   
   return (
     <Box display="flex" flexDirection={"column"} id="outer-menu-box">
       <NavBar setSelectedTab={setSelectedTab} />
-      <CategoryDrawer selectedTab={selectedTab} />
+      {selectedTab && (
+        <CategoryDrawer
+          setSelectedTab={setSelectedTab}
+          selectedTab={selectedTab}
+        />
+      )}
     </Box>
   );
 }
