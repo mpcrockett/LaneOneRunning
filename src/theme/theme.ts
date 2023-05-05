@@ -2,6 +2,7 @@ import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 import { buttonTheme } from "./buttonTheme";
 import "@fontsource/inter";
 import "@fontsource/playfair-display";
+import { inputTheme } from "./inputTheme";
 
 const config: ThemeConfig = {
   initialColorMode: 'light',
@@ -70,7 +71,7 @@ const fonts = {
   body: `'Inter', sans-serif`,
 }
 
-const theme = extendTheme({ colors, fonts, components: { Button: buttonTheme}, config})
+const theme = extendTheme({ colors, fonts, components: { Button: buttonTheme, Input: inputTheme }, config})
 
 export default theme
 

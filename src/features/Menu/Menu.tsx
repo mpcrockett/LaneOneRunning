@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
 import NavBar from "../NavBar/NavBar"
 import CategoryDrawer from "../Categories/CategoryDrawer"
-import { RefObject, useRef, useState } from "react";
+import { useState } from "react";
 
 function Menu() {
   const [selectedTab, setSelectedTab] = useState<null | string>(null);

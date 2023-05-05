@@ -1,5 +1,6 @@
 import { Box, useOutsideClick } from "@chakra-ui/react";
 import { RefObject, useRef } from 'react';
+import CategoryDrawerBox from "./CategoryDrawerBox";
 
 interface Props {
   selectedTab: string | null;
@@ -15,16 +16,9 @@ function CategoryDrawer(props: Props) {
   });
 
   return (
-    <Box
-      ref={ref}
-      width="100%"
-      bg="brand.cream.50"
-      display="flex"
-      justifyContent={"space-around"}
-      alignItems={"center"}
-      minHeight="200px"
-      id="category-option-box"
-    ></Box>
+    <CategoryDrawerBox ref={ref}>
+
+    </CategoryDrawerBox>
   );
 }
 

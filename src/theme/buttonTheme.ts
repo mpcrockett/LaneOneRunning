@@ -7,7 +7,7 @@ const navButton = defineStyle({
   fontSize: 'lg',
   fontWeight: '400',
   marginTop: '0px',
-  _hover: { textShadow: '0.5px 0.5px black' }
+  _hover: { textDecoration: 'underline' }
 })
 
 export const buttonTheme = defineStyleConfig({

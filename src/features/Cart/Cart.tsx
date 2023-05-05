@@ -11,30 +11,38 @@ import {
   Input,
   Button,
   Box,
+  Center,
 } from "@chakra-ui/react";
-import { useRef} from "react";
-import { IoCartOutline } from "react-icons/io5"
+import { useRef } from "react";
+import { IoCartOutline } from "react-icons/io5";
 import CartItem from "./CartItem";
 
 function Cart() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-  
+
   return (
     <>
-      <Icon
-        ref={btnRef}
-        as={IoCartOutline}
-        boxSize={6}
-        ml="14px"
-        onClick={onOpen}
-        color="brand.gray.900"
-      />
+      <Center width="16px" height="16px" m='10px'>
+        <Icon
+          ref={btnRef}
+          as={IoCartOutline}
+          boxSize={6}
+          onClick={onOpen}
+          color="brand.gray.900"
+        />
+      </Center>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg="brand.cream.50">
           <DrawerCloseButton variant="ghost" />
-          <DrawerHeader fontFamily={`'Playfair Display', serif`} fontSize='lg' fontWeight='400'>Your Cart</DrawerHeader>
+          <DrawerHeader
+            fontFamily={`'Playfair Display', serif`}
+            fontSize="lg"
+            fontWeight="400"
+          >
+            Your Cart
+          </DrawerHeader>
           <DrawerBody>
             <CartItem />
           </DrawerBody>
