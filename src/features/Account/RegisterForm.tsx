@@ -14,16 +14,14 @@ import BackButton from "../../components/BackButton";
 import FormItemBox from "../../components/FormItemBox";
 import NavButton from "../../components/NavButton";
 import { registerUserSchema } from "./validateRegistrationForm";
+import { RegisterFormValues } from "../../utils/Types";
 
-interface Values {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirm_password: string;
+interface Props {
+  handleSubmitForm: (values: RegisterFormValues) => void,
+  status: string | null
 }
 
-function RegisterForm() {
+function RegisterForm(props: Props) {
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -39,8 +37,8 @@ function RegisterForm() {
         <Formik
           initialValues={initialValues}
           validationSchema={registerUserSchema}
-          onSubmit={(values: Values) => {
-            console.log(JSON.stringify(values, null, 3));
+          onSubmit={(values: RegisterFormValues) => {
+            props.handleSubmitForm(values);
           }}
         >
           {(props) => (

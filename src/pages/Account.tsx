@@ -1,12 +1,16 @@
 import BackgroundBox from "../components/BackgroundBox";
 import { Box } from "@chakra-ui/react";
-import RegisterForm from "../features/Account/RegisterForm";
+import RegisterFormContainer from "../features/Account/RegisterFormContainer";
+import { useAppSelector } from "../store/hooks";
+import Profile from "./Profile";
 
 function Account() {
+  const { loggedIn } = useAppSelector((state) => state.user);
+
   return (
     <BackgroundBox>
       <Box w='100%' h='100%' display='flex' justifyContent='center' alignItems='center'>
-        <RegisterForm />
+        {loggedIn ? <Profile /> : <RegisterFormContainer />}
       </Box>
     </BackgroundBox>
   );
