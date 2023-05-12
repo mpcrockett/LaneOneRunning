@@ -31,7 +31,7 @@ function RegisterForm(props: Props) {
   };
 
   return (
-    <Center bg="brand.cream.50" w="650px" h="90%" rounded="lg" opacity="0.96">
+    <Center bg="brand.cream.50" w="650px" h="800px" rounded="lg" opacity="0.96">
       <Box w="80%">
         <BackButton />
         <Formik

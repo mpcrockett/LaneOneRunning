@@ -1,23 +1,16 @@
-import { useLoaderData } from "react-router-dom";
 import Menu from "../features/Menu/Menu"
-import { getMessage } from '../utils/mockApi'
+import { getProductCategories } from '../utils/mockApi'
 import BackgroundBox from "../components/BackgroundBox";
+import { Gender } from "../utils/Types";
 
-interface HomeLoaderData {
-  message: string
-}
-
-export async function homeLoader(): Promise<HomeLoaderData> {
-  return getMessage()
+export async function homeLoader(): Promise<Gender> {
+  return getProductCategories()
 }
 
 function Home() {
-  let data = useLoaderData() as HomeLoaderData;
-
   return (
     <BackgroundBox>
       <Menu />
-      <p>{data.message}</p>
     </BackgroundBox>
   );
 };

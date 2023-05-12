@@ -6,22 +6,20 @@ import NavButton from "../../components/NavButton";
 import Logo from "../../components/Logo";
 
 interface Props {
-  setSelectedTab: React.Dispatch<React.SetStateAction<string | null>>,
+  setSelectedTab: React.Dispatch<
+    React.SetStateAction<"women" | "men" | "unisex" | null>
+  >;
 }
 
 function NavBar(props: Props) {
   const { setSelectedTab } = props;
 
-  const handleButtonClick = (label: string) => {
+  const handleButtonClick = (label: "women" | "men" | "unisex") => {
     setSelectedTab(label)
   }
 
   return (
-    <FlexBoxSpaceBtwn
-      width="100%"
-      bg="brand.cream.50"
-      alignItems='center'
-    >
+    <FlexBoxSpaceBtwn width="100%" bg="brand.cream.50" alignItems="center">
       <FlexBoxSpaceBtwn width="33%">
         <NavButton label="Men" clickHandler={() => handleButtonClick("men")} />
         <NavButton
@@ -30,16 +28,13 @@ function NavBar(props: Props) {
         />
         <NavButton
           label="Accessories"
-          clickHandler={() => handleButtonClick("accessories")}
+          clickHandler={() => handleButtonClick("unisex")}
         />
       </FlexBoxSpaceBtwn>
       <Logo />
       <FlexBoxSpaceBtwn width="33%">
-        <NavButton
-          label="About"
-          clickHandler={() => handleButtonClick("about")}
-        />
-        <NavButton label="Contact" clickHandler={() => handleButtonClick("contact")} />
+        <NavButton label="About" clickHandler={() => console.log("about")} />
+        <NavButton label="Contact" clickHandler={() => console.log("contact")} />
         <FlexBoxSpaceBtwn>
           <Search />
           <AccountButton />

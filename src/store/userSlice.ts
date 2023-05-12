@@ -27,7 +27,7 @@ const initialState: userState = {
 export const registerAsync = createAsyncThunk(
   'user/register',
   async (values: RegisterFormValues) => {
-    const response = await axios.post('/api/users/register,', { values });
+    const response = await axios.post('/api/users/register', { values });
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }

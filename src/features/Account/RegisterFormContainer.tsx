@@ -11,7 +11,6 @@ function RegisterFormContainer() {
     dispatch(registerAsync(values));
   };
 
-
   return (
     <RegisterForm handleSubmitForm={handleSubmitForm} status={status} />
   );
