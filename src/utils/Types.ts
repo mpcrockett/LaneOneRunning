@@ -21,6 +21,7 @@ export type Category = {
   category_id: number;
   gender: string;
   name: string;
+  slug: string
 }
 
 export type CategoryEnum = 'shoes' | 'bottoms' | 'tops' | 'accessories';

@@ -5,6 +5,7 @@ import NavButton from "../../components/NavButton";
 interface Props {
   label: string;
   data: Category[];
+  clickHandler: (category: Category) => void;
 }
 
 function CategoryMenuBox(props: Props) {
@@ -17,7 +18,7 @@ function CategoryMenuBox(props: Props) {
         return (
           <NavButton
             label={sub.sub_name}
-            clickHandler={() => console.log(sub.subcategory_id)}
+            clickHandler={() => props.clickHandler(sub)}
             key={sub.subcategory_id}
           />
         );
