@@ -1,9 +1,14 @@
+import { Category } from "../../utils/Types"
+import CategoryMenuBox from "./CategoryMenuBox"
 
+interface Props {
+  data: Category[]
+}
 
-function CategoryMenu() {
+function CategoryMenu(props: Props) {
   return (
-    <div>CategoryMenu</div>
-  )
+    <CategoryMenuBox label={props.data[0].name} data={props.data} />
+  );
 }
 
 export default CategoryMenu

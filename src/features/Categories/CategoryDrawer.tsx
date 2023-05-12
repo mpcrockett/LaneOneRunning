@@ -1,16 +1,18 @@
 import { useOutsideClick } from "@chakra-ui/react";
-import { RefObject, useRef } from 'react';
+import { RefObject, useRef } from "react";
 import CategoryDrawerBox from "./CategoryDrawerBox";
 import { Gender } from "../../utils/Types";
+import CategoryMenu from "./CategoryMenu";
 
 interface Props {
   selectedTab: string | null;
-  setSelectedTab: React.Dispatch<React.SetStateAction<'women' | 'men' | 'unisex' | null>>;
-  data: Gender
+  setSelectedTab: React.Dispatch<React.SetStateAction<"women" | "men" | "unisex" | null>>;
+  data: Gender;
 }
 
-function CategoryDrawer(props: Props) { 
+function CategoryDrawer(props: Props) {
   const ref: RefObject<HTMLDivElement> = useRef(null);
+  const keys = Object.keys(props.data);
 
   useOutsideClick({
     ref: ref,
@@ -19,23 +21,16 @@ function CategoryDrawer(props: Props) {
 
   return (
     <CategoryDrawerBox ref={ref}>
-      { Object.keys(props.data).map((x) => {
-          return (
-            <>
-              <p>
-                {x}
-              </p>
-            </>
-          );
-        }
-      )}
+      {keys.map((x) => {
+        return <CategoryMenu data={props.data[x]} />;
+      })}
     </CategoryDrawerBox>
   );
 }
 
-export default CategoryDrawer
+export default CategoryDrawer;
 
-//example data 
+//example data
 // {
 //     "shoes": [
 //       {

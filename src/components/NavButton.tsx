@@ -7,7 +7,7 @@ interface Props {
 
 function NavButton(props: Props) {
   return (
-    <Button variant="navButton" onClick={props.clickHandler}>
+    <Button variant="navButton" onClick={props.clickHandler} textTransform='capitalize'>
       {props.label}
     </Button>
   );

@@ -23,11 +23,15 @@ export type Category = {
   name: string;
 }
 
-export type Gender = {
-  shoes: Category[];
-  bottoms: Category[];
-  tops: Category[];
-  accessories?: Category[];
-}
+export type CategoryEnum = 'shoes' | 'bottoms' | 'tops' | 'accessories';
+
+export type Gender = Record<string, Category[]>
+
+// export type Gender = {
+//   shoes: Category[];
+//   bottoms: Category[];
+//   tops: Category[];
+//   accessories?: Category[];
+// }
 
 export type ProductData = Record<'women' | 'men' | 'unisex', Gender>;
