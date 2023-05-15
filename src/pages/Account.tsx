@@ -1,13 +1,15 @@
 import BackgroundBox from "../components/BackgroundBox";
-import { Box } from "@chakra-ui/react";
-import RegisterFormContainer from "../features/Account/RegisterFormContainer";
+import { Box, useBoolean } from "@chakra-ui/react";
+import RegisterFormContainer from "../features/Account/RegisterForm";
 import { useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import LoginForm from "../features/Account/LoginForm";
 
 function Account() {
   const { loggedIn } = useAppSelector((state) => state.user);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [showLogin, setShowLogin] = useBoolean()
 
   useEffect(() => {
     if(loggedIn) {
@@ -18,7 +20,7 @@ function Account() {
   return (
     <BackgroundBox>
       <Box w='100%' h='100%' display='flex' justifyContent='center' alignItems='center'>
-        <RegisterFormContainer />
+        {showLogin ? <LoginForm toggleLogin={setShowLogin.off} /> : <RegisterFormContainer toggleLogin={setShowLogin.on} />}
       </Box>
     </BackgroundBox>
   );

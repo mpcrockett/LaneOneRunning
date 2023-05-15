@@ -15,6 +15,11 @@ export interface RegisterFormValues {
   confirm_password: string
 }
 
+export interface LoginFormValues {
+  email: string,
+  password: string
+}
+
 export type Category = {
   subcategory_id: number;
   sub_name: string;
