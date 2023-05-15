@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from './store';
-import { RegisterFormValues, User } from '../utils/Types';
+import { LoginFormValues, RegisterFormValues, User } from '../utils/Types';
 import axios from 'axios';
 
 export interface userState {
@@ -8,7 +8,8 @@ export interface userState {
   status: string | null,
   user: {
     username: string | null
-  }
+  },
+  error: {} | null | unknown
 }
 
 const initialState: userState = {
@@ -17,18 +18,21 @@ const initialState: userState = {
   user: {
     username: null
   },
+  error: null
 };
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
 export const registerAsync = createAsyncThunk(
-  'user/register',
+  'register',
   async (values: RegisterFormValues) => {
     const response = await axios.post('/api/users/register', { values });
-    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+export const loginAsync = createAsyncThunk(
+  'login',
+  async (values: LoginFormValues) => {
+    const response = await axios.post('/api/login', { email: values.email, password: values.password });
     return response.data;
   }
 );
@@ -36,13 +40,8 @@ export const registerAsync = createAsyncThunk(
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     loggedIn: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.loggedIn = true;
       state.user = action.payload;
     },
@@ -61,7 +60,19 @@ export const userSlice = createSlice({
       })
       .addCase(registerAsync.rejected, (state) => {
         state.status = 'failed';
-      });
+      })
+      .addCase(loginAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(loginAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.loggedIn = true;
+        state.user = action.payload;
+      })
+      .addCase(loginAsync.rejected, (state, { payload }) => {
+        state.status = 'failed';
+        state.error = payload;
+      })
   },
 });
 

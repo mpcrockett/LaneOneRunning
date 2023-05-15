@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   FormControl,
+  FormErrorMessage,
   FormHelperText,
   FormLabel,
   Heading,
@@ -19,6 +20,7 @@ import { loginSchema } from "./validateLoginForm";
 interface Props {
   toggleLogin: () => void;
   handleSubmitForm: (values: LoginFormValues) => void;
+  status: string | null;
 }
 
 function LoginForm(props: Props) {
@@ -26,6 +28,8 @@ function LoginForm(props: Props) {
     email: "",
     password: "",
   };
+
+  const isError = props.status === 'failed'; 
 
   return (
     <Center bg="brand.cream.50" w="650px" h="800px" rounded="lg" opacity="0.96">
@@ -39,7 +43,7 @@ function LoginForm(props: Props) {
           }}
         >
           {(props) => (
-            <FormControl>
+            <FormControl isInvalid={isError}>
               <form onSubmit={props.handleSubmit}>
                 <Heading size="md" mb="2rem" textAlign="center">
                   Log In to Your Account
@@ -73,6 +77,9 @@ function LoginForm(props: Props) {
                       Reset it here.
                     </Link>
                   </FormHelperText>
+                  <FormErrorMessage>
+                    Invalid email or password.
+                  </FormErrorMessage>
                 </FormItemBox>
                 <Button
                   m={4}
