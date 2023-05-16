@@ -17,9 +17,9 @@ import { registerUserSchema } from "./validateRegistrationForm";
 import { RegisterFormValues } from "../../utils/Types";
 
 interface Props {
-  handleSubmitForm: (values: RegisterFormValues) => void,
-  toggleLogin: () => void,
-  status: string | null
+  handleSubmitForm: (values: RegisterFormValues) => void;
+  toggleLogin: () => void;
+  status: string | null;
 }
 
 function RegisterForm(props: Props) {

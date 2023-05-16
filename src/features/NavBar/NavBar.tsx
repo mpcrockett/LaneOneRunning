@@ -1,9 +1,11 @@
 import Cart from "../Cart/Cart";
 import Search from "./Search";
-import AccountButton from "./AccountButton";
+import AccountButton from "../Account/AccountButton";
 import FlexBoxSpaceBtwn from "../../components/FlexBoxSpaceBtwn";
 import NavButton from "../../components/NavButton";
 import Logo from "../../components/Logo";
+import { useAppSelector } from "../../store/hooks";
+import UserProfile from "../Profile/UserProfile";
 
 interface Props {
   setSelectedTab: React.Dispatch<
@@ -12,6 +14,7 @@ interface Props {
 }
 
 function NavBar(props: Props) {
+  const { loggedIn } = useAppSelector((state) => state.user);
   const { setSelectedTab } = props;
 
   const handleButtonClick = (label: "women" | "men" | "unisex") => {
@@ -37,7 +40,7 @@ function NavBar(props: Props) {
         <NavButton label="Contact" clickHandler={() => console.log("contact")} />
         <FlexBoxSpaceBtwn>
           <Search />
-          <AccountButton />
+          {loggedIn ? <UserProfile /> : <AccountButton />}
           <Cart />
         </FlexBoxSpaceBtwn>
       </FlexBoxSpaceBtwn>

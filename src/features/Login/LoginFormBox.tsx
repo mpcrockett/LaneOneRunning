@@ -29,7 +29,7 @@ function LoginForm(props: Props) {
     password: "",
   };
 
-  const isError = props.status === 'failed'; 
+  const isError = props.status === "failed";
 
   return (
     <Center bg="brand.cream.50" w="650px" h="800px" rounded="lg" opacity="0.96">

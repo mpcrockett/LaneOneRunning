@@ -9,7 +9,7 @@ interface Props {
 
 function LoginForm(props: Props) {
   const dispatch = useAppDispatch();
-  const { status, error } = useAppSelector((state) => state.user);
+  const { status } = useAppSelector((state) => state.user);
 
   const handleSubmitForm = (values: LoginFormValues) => {
     dispatch(loginAsync(values));

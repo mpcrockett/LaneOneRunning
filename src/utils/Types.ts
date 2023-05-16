@@ -1,4 +1,10 @@
-
+export interface UserProfile {
+  first_name: string | null,
+  last_name: string | null,
+  email: string | null,
+  birthday: string | null,
+  loyalty_acct: number | null
+}
 export interface User {
   firstName: string;
   lastName: string;
