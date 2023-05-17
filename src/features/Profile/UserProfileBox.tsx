@@ -13,6 +13,7 @@ import NavButton from "../../components/NavButton";
 import SideDrawer from "../../components/SideDrawer";
 
 interface Props {
+  handleLogOut: () => void;
   user: UserProfile | null;
   status: string | null;
 }
@@ -44,7 +45,7 @@ function UserProfileBox(props: Props) {
             />
           </Box>
 
-          <Button m={4} colorScheme="teal" variant="outline">
+          <Button m={4} colorScheme="teal" variant="outline" onClick={props.handleLogOut}>
             Log Out
           </Button>
         </Stack>

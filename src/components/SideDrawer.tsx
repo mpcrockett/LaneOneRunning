@@ -15,13 +15,14 @@ function SideDrawer(props: Props) {
   return (
     <>
       <Center width="16px" height="16px" m="10px">
-        <Icon
-          ref={btnRef}
-          as={props.icon}
-          boxSize={6}
-          onClick={onOpen}
-          color="brand.gray.900"
-        />
+        <div ref={btnRef}>
+          <Icon
+            as={props.icon}
+            boxSize={6}
+            onClick={onOpen}
+            color="brand.gray.900"
+          />
+        </div>
       </Center>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />

@@ -51,9 +51,19 @@ export const getUserProfileAsync = createAsyncThunk(
     const response = await axios.get('/api/users/account', { withCredentials: true });
     return response.data
   }
+);
+
+export const logOutUserAsync = createAsyncThunk(
+  'logOut',
+  async () => {
+    console.log('Called.')
+    const response = await axios.delete('/api/login', { withCredentials: true });
+    console.log(response.data)
+    return response.data
+  }
 )
 
-//USER SLICE
+//USER SLICE 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -102,6 +112,21 @@ export const userSlice = createSlice({
       })
       .addCase(getUserProfileAsync.rejected, (state) => {
         state.getUser_status = 'failed';
+      })
+      //LOG OUT USER
+      .addCase(logOutUserAsync.fulfilled, (state) => {
+        state.loggedIn = false;
+        state.register_status = null;
+        state.login_status = null;
+        state.getUser_status = null;
+        state.user = {
+          first_name: null,
+          last_name: null,
+          email: null,
+          birthday: null,
+          loyalty_acct: null,
+        };
+        state.error = null;
       })
   },
 });

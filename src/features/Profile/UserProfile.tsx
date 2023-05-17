@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { getUserProfileAsync } from "../../store/userSlice";
+import { getUserProfileAsync, logOutUserAsync } from "../../store/userSlice";
 import UserProfileBox from "./UserProfileBox";
 
 function UserProfile() {
@@ -13,8 +13,12 @@ function UserProfile() {
     dispatch(getUserProfileAsync());
   }, []);
 
+  const handleLogOut = () => {
+    dispatch(logOutUserAsync())
+  }
+
   return (
-    <UserProfileBox status={status} user={user} />
+    <UserProfileBox status={status} user={user} handleLogOut={handleLogOut}/>
   );
 }
 
