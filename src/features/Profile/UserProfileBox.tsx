@@ -21,7 +21,7 @@ interface Props {
 function UserProfileBox(props: Props) {
   return (
     <SideDrawer label={"Your Account"} icon={BsPerson}>
-      <DrawerBody pt="50px">
+     { props.status === 'pending' ? <UserProfileSkeleton /> : <DrawerBody pt="50px">
         <Stack mb='15px'>
           <Text pt="2" fontSize="sm">
             {`Logged in as: ${props.user?.first_name} ${props.user?.last_name}`}
@@ -49,7 +49,7 @@ function UserProfileBox(props: Props) {
             Log Out
           </Button>
         </Stack>
-      </DrawerBody>
+      </DrawerBody> }
     </SideDrawer>
   );
 }

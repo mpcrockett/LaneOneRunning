@@ -1,5 +1,5 @@
 import Menu from "../features/Menu/Menu"
-import { getProductCategories } from '../utils/mockApi'
+import { getProductCategories } from '../utils/api'
 import BackgroundBox from "../components/BackgroundBox";
 import { Gender } from "../utils/Types";
 

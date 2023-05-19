@@ -1,30 +1,43 @@
-import { useOutsideClick } from "@chakra-ui/react";
+import { Box, useOutsideClick } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
 import CategoryDrawerBox from "./CategoryDrawerBox";
-import { Gender } from "../../utils/Types";
 import CategoryMenu from "./CategoryMenu";
+import useCategories from "../../hooks/useCategories";
 
 interface Props {
-  selectedTab: string | null;
-  setSelectedTab: React.Dispatch<React.SetStateAction<"women" | "men" | "unisex" | null>>;
-  data: Gender;
+  selectedTab: string;
+  setSelectedTab: React.Dispatch<
+    React.SetStateAction<"women" | "men" | "unisex" | ''>
+  >;
 }
 
 function CategoryDrawer(props: Props) {
+  const { isLoading, data, error } = useCategories();
+
   const ref: RefObject<HTMLDivElement> = useRef(null);
-  const keys = Object.keys(props.data);
 
   useOutsideClick({
     ref: ref,
-    handler: () => props.setSelectedTab(null),
+    handler: () => props.setSelectedTab(''),
   });
 
   return (
-    <CategoryDrawerBox ref={ref}>
-      {keys.map((x) => {
-        return <CategoryMenu data={props.data[x]} />;
-      })}
-    </CategoryDrawerBox>
+    <Box>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error: {error}</div>}
+      {data && props.selectedTab != null && (
+        <CategoryDrawerBox ref={ref}>
+          {Object.keys(data[props.selectedTab]).map((x: string) => {
+            if (x in data[props.selectedTab]) {
+              return <CategoryMenu data={data[props.selectedTab][x]} />;
+            } else {
+              return null; // or any appropriate fallback
+            }
+          })
+          }
+        </CategoryDrawerBox>
+      )}
+    </Box>
   );
 }
 

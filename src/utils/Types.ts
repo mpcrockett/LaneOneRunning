@@ -39,11 +39,17 @@ export type CategoryEnum = 'shoes' | 'bottoms' | 'tops' | 'accessories';
 
 export type Gender = Record<string, Category[]>
 
-// export type Gender = {
-//   shoes: Category[];
-//   bottoms: Category[];
-//   tops: Category[];
-//   accessories?: Category[];
-// }
+export type ProductData = Record<string, Gender>;
 
-export type ProductData = Record<'women' | 'men' | 'unisex', Gender>;
+export type Product = {
+  product_id: number,
+  description: string,
+  name: string, 
+  gender: 'women' | 'men' | 'unisex',
+  price: number,
+  brand: string,
+  subcategory_id: number,
+  url: string
+}
+
+export type Products = Array<Product>;

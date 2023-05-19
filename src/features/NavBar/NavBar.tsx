@@ -9,7 +9,7 @@ import UserProfile from "../Profile/UserProfile";
 
 interface Props {
   setSelectedTab: React.Dispatch<
-    React.SetStateAction<"women" | "men" | "unisex" | null>
+    React.SetStateAction<"women" | "men" | "unisex" | ''>
   >;
 }
 

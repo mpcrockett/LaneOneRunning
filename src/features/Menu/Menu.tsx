@@ -2,14 +2,9 @@ import { Box } from "@chakra-ui/react"
 import NavBar from "../NavBar/NavBar"
 import CategoryDrawer from "../Categories/CategoryDrawer"
 import { useState } from "react";
-import {ProductData } from '../../utils/Types'
-import { useLoaderData } from "react-router-dom";
-
-
 
 function Menu() {
-  const [selectedTab, setSelectedTab] = useState<'women' | 'men' | 'unisex' | null>(null);
-  const data = useLoaderData() as ProductData; 
+  const [selectedTab, setSelectedTab] = useState<'women' | 'men' | 'unisex' | ''>('');
 
   return (
     <Box display="flex" flexDirection={"column"} id="outer-menu-box">
@@ -18,7 +13,6 @@ function Menu() {
         <CategoryDrawer
           setSelectedTab={setSelectedTab}
           selectedTab={selectedTab}
-          data={data[selectedTab]}
         />
       )}
     </Box>
