@@ -29,9 +29,14 @@ function CategoryDrawer(props: Props) {
         <CategoryDrawerBox ref={ref}>
           {Object.keys(data[props.selectedTab]).map((x: string) => {
             if (x in data[props.selectedTab]) {
-              return <CategoryMenu data={data[props.selectedTab][x]} />;
+              return (
+                <CategoryMenu
+                  key={`${data[props.selectedTab]} ${x}`}
+                  data={data[props.selectedTab][x]}
+                />
+              );
             } else {
-              return null; // or any appropriate fallback
+              return null;
             }
           })
           }
