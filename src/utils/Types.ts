@@ -31,7 +31,7 @@ export type Category = {
   sub_name: string;
   category_id: number;
   gender: string;
-  name: string;
+  cat_name: string;
   slug: string
 }
 
@@ -45,11 +45,25 @@ export type Product = {
   product_id: number,
   description: string,
   name: string, 
-  gender: 'women' | 'men' | 'unisex',
-  price: number,
+  gender: string,
+  price: string,
   brand: string,
   subcategory_id: number,
   url: string
+  cat_name: string,
+  slug: string
 }
 
 export type Products = Array<Product>;
+
+export type Item = {
+  item_id: number,
+  product_id: number,
+  size: string,
+  number_in_stock: number,
+  color: string
+}
+
+export type ProductById = Product & {
+  items: Array<Item>
+}

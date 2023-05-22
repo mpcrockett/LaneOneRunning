@@ -1,14 +1,22 @@
+import { useLoaderData } from "react-router-dom";
 import { Products } from "../utils/Types";
 import { getProducts } from "../utils/api";
+import Menu from "../features/Menu/Menu";
+import ProductsGrid from "../features/Products/ProductsGrid";
 
 export async function productsLoader(): Promise<Products> {
   return getProducts();
 }
 
-function Products() {
+function ProductsPage() {
+  const data = useLoaderData() as Products;
+
   return (
-    <div>Products</div>
+    <>
+      <Menu />
+      <ProductsGrid data={data} />
+    </>
   )
 }
 
-export default Products
+export default ProductsPage;

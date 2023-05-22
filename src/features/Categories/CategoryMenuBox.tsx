@@ -12,7 +12,7 @@ function CategoryMenuBox(props: Props) {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <Heading size="md" textTransform="capitalize" marginBottom='10px'>
-        {props.data[0].name}
+        {props.data[0].cat_name}
       </Heading>
       {props.data.map((sub) => {
         return (

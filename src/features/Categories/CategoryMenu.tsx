@@ -10,12 +10,12 @@ function CategoryMenu(props: Props) {
   const navigate = useNavigate();
 
   const handleMenuButtonClick = (category: Category) => {
-    navigate(`/${category.gender}/${category.name}/${category.slug}`)
+    navigate(`/products/${category.gender}/${category.cat_name}/${category.slug}`)
   };
 
   return (
     <CategoryMenuBox
-      label={props.data[0].name}
+      label={props.data[0].cat_name}
       data={props.data}
       clickHandler={handleMenuButtonClick}
     />
