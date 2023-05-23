@@ -65,5 +65,5 @@ export type Item = {
 }
 
 export type ProductById = Product & {
-  items: Array<Item>
+  items?: Array<Item>
 }

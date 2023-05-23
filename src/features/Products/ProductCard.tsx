@@ -5,7 +5,6 @@ import {
   Stack,
   Heading,
   Text,
-  Button,
   Box,
 } from "@chakra-ui/react";
 import { Product } from "../../utils/Types";
@@ -20,7 +19,7 @@ function ProductsCard(props: Product) {
   };
 
   return (
-    <Card maxW="sm" maxH="md" bg="brand.cream.50">
+    <Card maxW="sm" maxH="md" bg="brand.cream.50" onClick={handleButtonClick}>
       <CardBody alignItems="center">
         <Box height="150px" width="100%">
           <Image
@@ -33,25 +32,15 @@ function ProductsCard(props: Product) {
           />
         </Box>
         <Stack mt="3" spacing="1">
-          <Heading size="sm">{product.name + ' by ' + product.brand}</Heading>
-          <Text fontSize="xs" textTransform='capitalize'>{product.gender}</Text>
-          <Text fontSize="xs" align="justify">
-            {product.description}
+          <Heading size="sm">{product.name + " by " + product.brand}</Heading>
+          <Text fontSize="xs" textTransform="capitalize">
+            {product.gender}
           </Text>
           <Text color="brand.teal.600" fontSize="xs">
             {product.price}
           </Text>
         </Stack>
       </CardBody>
-      <Button
-        onClick={handleButtonClick}
-        size="sm"
-        variant="ghost"
-        colorScheme="teal"
-        m="2"
-      >
-        More Details
-      </Button>
     </Card>
   );
 }

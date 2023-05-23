@@ -14,7 +14,7 @@ function ProductsGrid(props: Props) {
 
   return (
     <Center padding='3'>
-      <SimpleGrid columns={isDesktop ? 3 : 2} spacing={5}>
+      <SimpleGrid columns={isDesktop ? 3 : 2 } spacing={5}>
         {props.data.map((product) => {
           return <ProductsCard key={product.product_id} {...product} />;
         })}

@@ -1,11 +1,11 @@
 import { DrawerBody, DrawerFooter, Button } from "@chakra-ui/react";
-import { IoCartOutline } from "react-icons/io5";
+import { IoBagOutline } from "react-icons/io5";
 import CartItem from "./CartItem";
 import SideDrawer from "../../components/SideDrawer";
 
 function Cart() {
   return (
-    <SideDrawer label={"Your Cart"} icon={IoCartOutline}>
+    <SideDrawer label={"Your Cart"} icon={IoBagOutline}>
       <DrawerBody>
         <CartItem />
       </DrawerBody>

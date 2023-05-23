@@ -1,8 +1,18 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Profile from "./pages/Profile";
-import ProductsPage, { productsLoader } from "./pages/Products";
+import ProductsPage, {
+  productsLoader,
+  productsByGenderLoader,
+  productsByCategoryLoader,
+  productsBySubcategoryLoader
+} from "./pages/Products";
 import Product, { productLoader } from "./pages/Product";
 
 const router = createBrowserRouter(
@@ -15,10 +25,26 @@ const router = createBrowserRouter(
       </Route>
       <Route path="products">
         <Route element={<ProductsPage />} index loader={productsLoader} />
-        <Route path=":gender" element={<div>Products by Gender</div>} />
-        <Route path=":gender/:category" element={<div>Products by category</div>} />
-        <Route path=":gender/:category/:subcategory" element={<div>Products by subcategory</div>} />
-        <Route path=":gender/:category/:subcategory/:id" element={<Product />} loader={productLoader} />
+        <Route
+          path=":gender"
+          element={<ProductsPage />}
+          loader={productsByGenderLoader}
+        />
+        <Route
+          path=":gender/:category"
+          element={<ProductsPage />}
+          loader={productsByCategoryLoader}
+        />
+        <Route
+          path=":gender/:category/:subcategory"
+          element={<ProductsPage />}
+          loader={productsBySubcategoryLoader}
+        />
+        <Route
+          path=":gender/:category/:subcategory/:id"
+          element={<Product />}
+          loader={productLoader}
+        />
       </Route>
     </Route>
   )
