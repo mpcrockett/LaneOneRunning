@@ -9,15 +9,20 @@ interface Props {
 function CategoryMenu(props: Props) {
   const navigate = useNavigate();
 
-  const handleMenuButtonClick = (category: Category) => {
+  const handleSubMenuButtonClick = (category: Category) => {
     navigate(`/products/${category.gender}/${category.cat_name}/${category.slug}`)
+  };
+
+  const handleCategoryClick = (category: Category) => {
+    navigate(`/products/${category.gender}/${category.cat_name}`);
   };
 
   return (
     <CategoryMenuBox
       label={props.data[0].cat_name}
       data={props.data}
-      clickHandler={handleMenuButtonClick}
+      subClickHandler={handleSubMenuButtonClick}
+      catClickHandler={handleCategoryClick}
     />
   );
 }

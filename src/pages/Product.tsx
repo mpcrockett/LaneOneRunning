@@ -3,6 +3,7 @@ import { LoaderFunctionArgs, useLoaderData, useParams } from "react-router-dom";
 import { getProductById } from "../utils/api";
 import { ProductById } from "../utils/Types";
 import ProductProfile from "../features/Product/ProductProfile";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 export async function productLoader({
   params,
@@ -19,6 +20,7 @@ function Product() {
   return (
     <>
       <Menu />
+      <Breadcrumbs />
       <ProductProfile {...data} />
     </>
   );

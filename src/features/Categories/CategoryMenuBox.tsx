@@ -1,24 +1,28 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 import { Category } from "../../utils/Types";
 import NavButton from "../../components/NavButton";
 
 interface Props {
   label: string;
   data: Category[];
-  clickHandler: (category: Category) => void;
+  subClickHandler: (category: Category) => void;
+  catClickHandler: (category: Category) => void;
 }
 
 function CategoryMenuBox(props: Props) {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <Heading size="md" textTransform="capitalize" marginBottom='10px'>
-        {props.data[0].cat_name}
-      </Heading>
+      <Button onClick={() => props.catClickHandler(props.data[0])} variant='link' color='black'>
+        <Heading size="md" textTransform="capitalize" marginBottom="10px">
+          {props.data[0].cat_name}
+        </Heading>
+      </Button>
+
       {props.data.map((sub) => {
         return (
           <NavButton
             label={sub.sub_name}
-            clickHandler={() => props.clickHandler(sub)}
+            clickHandler={() => props.subClickHandler(sub)}
             key={sub.subcategory_id}
           />
         );
