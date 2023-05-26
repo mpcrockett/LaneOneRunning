@@ -1,27 +1,27 @@
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { registerAsync } from "../../store/userSlice";
 import { RegisterFormValues } from "../../utils/Types";
-import RegisterForm from "./RegisterFormBox";
+import RegisterFormBox from "./RegisterFormBox";
 
 interface Props {
   toggleLogin: () => void;
 }
 
-function RegisterFormContainer(props: Props) {
+function RegisterForm(props: Props) {
   const dispatch = useAppDispatch();
-  const { status } = useAppSelector((state) => state.user);
+  const { register_status } = useAppSelector((state) => state.user);
 
   const handleSubmitForm = (values: RegisterFormValues) => {
     dispatch(registerAsync(values));
   };
 
   return (
-    <RegisterForm
+    <RegisterFormBox
       handleSubmitForm={handleSubmitForm}
       toggleLogin={props.toggleLogin}
-      status={status}
+      status={register_status}
     />
   );
 }
 
-export default RegisterFormContainer;
+export default RegisterForm;

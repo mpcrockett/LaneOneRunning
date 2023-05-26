@@ -27,7 +27,7 @@ function Breadcrumbs() {
   };
 
   return (
-    <Center>
+    <Center m='5'>
       <Breadcrumb
         spacing="8px"
         separator={<ChevronRightIcon color="gray.500" />}

@@ -9,7 +9,7 @@ interface Props {
 
 function LoginForm(props: Props) {
   const dispatch = useAppDispatch();
-  const { status } = useAppSelector((state) => state.user);
+  const { login_status } = useAppSelector((state) => state.user);
 
   const handleSubmitForm = (values: LoginFormValues) => {
     dispatch(loginAsync(values));
@@ -19,7 +19,7 @@ function LoginForm(props: Props) {
     <LoginFormBox
       toggleLogin={props.toggleLogin}
       handleSubmitForm={handleSubmitForm}
-      status={status}
+      status={login_status}
     />
   );
 }

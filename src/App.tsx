@@ -14,11 +14,15 @@ import ProductsPage, {
   productsBySubcategoryLoader
 } from "./pages/Products";
 import Product, { productLoader } from "./pages/Product";
+import AuthCallback from "./pages/AuthCallback";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route element={<Home />} index />
+      <Route path="/callback">
+        <Route element={<AuthCallback />} index  />
+      </Route>
       <Route path="account">
         <Route element={<Account />} index />
         <Route path="profile" element={<Profile />} />

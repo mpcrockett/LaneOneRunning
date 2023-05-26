@@ -56,7 +56,6 @@ export const getUserProfileAsync = createAsyncThunk(
 export const logOutUserAsync = createAsyncThunk(
   'logOut',
   async () => {
-    console.log('Called.')
     const response = await axios.delete('/api/login', { withCredentials: true });
     console.log(response.data)
     return response.data

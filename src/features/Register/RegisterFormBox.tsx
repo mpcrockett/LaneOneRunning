@@ -9,12 +9,13 @@ import {
   FormLabel,
   Heading,
   Input,
+  Text,
 } from "@chakra-ui/react";
 import BackButton from "../../components/BackButton";
 import FormItemBox from "../../components/FormItemBox";
-import NavButton from "../../components/NavButton";
 import { registerUserSchema } from "./validateRegistrationForm";
 import { RegisterFormValues } from "../../utils/Types";
+import GoogleSignUp from "../../components/GoogleSignUp";
 
 interface Props {
   handleSubmitForm: (values: RegisterFormValues) => void;
@@ -22,7 +23,7 @@ interface Props {
   status: string | null;
 }
 
-function RegisterForm(props: Props) {
+function RegisterFormBox(props: Props) {
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -52,6 +53,7 @@ function RegisterForm(props: Props) {
                   <FormControl isInvalid={!!props.errors.firstName}>
                     <FormLabel>First Name</FormLabel>
                     <Input
+                      size='xs'
                       type="text"
                       id="firstName"
                       name="firstName"
@@ -68,6 +70,7 @@ function RegisterForm(props: Props) {
                   <FormControl isInvalid={!!props.errors.lastName}>
                     <FormLabel>Last Name</FormLabel>
                     <Input
+                      size='xs'
                       type="text"
                       id="lastName"
                       name="lastName"
@@ -82,6 +85,7 @@ function RegisterForm(props: Props) {
                   <FormControl isInvalid={!!props.errors.email}>
                     <FormLabel>Email address</FormLabel>
                     <Input
+                      size='xs'
                       type="text"
                       id="email"
                       name="email"
@@ -101,6 +105,7 @@ function RegisterForm(props: Props) {
                   <FormControl isInvalid={!!props.errors.password}>
                     <FormLabel>Password</FormLabel>
                     <Input
+                      size='xs'
                       type="password"
                       id="password"
                       name="password"
@@ -118,6 +123,7 @@ function RegisterForm(props: Props) {
                   <FormControl isInvalid={!!props.errors.confirm_password}>
                     <FormLabel>Re-enter password</FormLabel>
                     <Input
+                      size='xs'
                       type="password"
                       id="confirm_password"
                       name="confirm_password"
@@ -142,13 +148,25 @@ function RegisterForm(props: Props) {
             </FormControl>
           )}
         </Formik>
-        <NavButton
-          clickHandler={() => props.toggleLogin()}
-          label="Already registered? Click here to log in."
-        />
+        <Box
+          alignSelf="center"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Text>or</Text>
+
+          <Box m="4">
+            <GoogleSignUp />
+          </Box>
+
+          <Button onClick={() => props.toggleLogin()} variant="link" size="xs">
+            Already have an account? Click here to log in.
+          </Button>
+        </Box>
       </Box>
     </Center>
   );
 }
 
-export default RegisterForm;
+export default RegisterFormBox;

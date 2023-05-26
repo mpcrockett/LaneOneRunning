@@ -1,6 +1,6 @@
 import BackgroundBox from "../components/BackgroundBox";
 import { Box, useBoolean } from "@chakra-ui/react";
-import RegisterFormContainer from "../features/Register/RegisterForm";
+import RegisterForm from "../features/Register/RegisterForm";
 import { useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -29,7 +29,7 @@ function Account() {
         {showLogin ? (
           <LoginForm toggleLogin={setShowLogin.off} />
         ) : (
-          <RegisterFormContainer toggleLogin={setShowLogin.on} />
+          <RegisterForm toggleLogin={setShowLogin.on} />
         )}
       </Box>
     </BackgroundBox>
