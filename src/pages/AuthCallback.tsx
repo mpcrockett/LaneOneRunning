@@ -19,7 +19,7 @@ function AuthCallback() {
 
   useEffect(() => {
     if(error) {
-      // navigate('/account');
+      navigate('/account');
       console.log(error);
     }
   }, [error]);

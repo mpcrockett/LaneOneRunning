@@ -7,7 +7,8 @@ import {
 } from "@chakra-ui/react";
 
 interface Props {
-  default?: number
+  default?: number;
+  onChangeHandler: (valueAsString: string, valueAsNumber: number) => void;
 }
 
 function ItemQuantityStepper(props: Props) {
@@ -18,6 +19,7 @@ function ItemQuantityStepper(props: Props) {
       defaultValue={props?.default || 0}
       min={0}
       max={30}
+      onChange={props.onChangeHandler}
     >
       <NumberInputField />
       <NumberInputStepper>
