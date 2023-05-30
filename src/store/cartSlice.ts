@@ -11,76 +11,55 @@ export type cartItem = {
   size: string,
   color: string,
   quantity: number
-  url: string
+  url: string,
+  price: number
 }
 export interface cartState {
   items: Array<cartItem>,
   addStatus: string | null;
+  cartTotal: number;
 }
 
 const initialState: cartState = {
   items: [],
-  addStatus: null
+  addStatus: null,
+  cartTotal: 0,
 };
 
-//THUNKS
-
-// export const addToCartAsync = createAsyncThunk(
-//   'addToCart',
-//   async (item: cartItem) => {
-//     const response = await axios.post(`/api/products/${item.product_id}/items/add-to-cart`, item, { withCredentials: true });
-//     return response.data;
-//   }
-// );
-
-// export const loginAsync = createAsyncThunk(
-//   'login',
-//   async (values: LoginFormValues) => {
-//     const response = await axios.post('/api/login', { email: values.email, password: values.password });
-//     return response.data;
-//   }
-// );
-
-// export const getUserProfileAsync = createAsyncThunk(
-//   'profile',
-//   async () => {
-//     const response = await axios.get('/api/users/account', { withCredentials: true });
-//     return response.data
-//   }
-// );
-
-// export const logOutUserAsync = createAsyncThunk(
-//   'logOut',
-//   async () => {
-//     const response = await axios.delete('/api/login', { withCredentials: true });
-//     console.log(response.data)
-//     return response.data
-//   }
-// )
-
-//USER SLICE 
+//Cart SLICE 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
     addToCart: (state, action) => {
       state.items.push(action.payload);
+      state.cartTotal = state.cartTotal + Number(action.payload.price);
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.item_id !== action.payload);
     },
     updateQuantity: (state, action) => {
-      const newItems = state.items.map((item) => {
-        if(item.item_id === action.payload.item_id) {
-          return {...item, quantity: action.payload.quantity}
-        } else {
-          return item
-        }
-      });
+      let newItems;
+      if(action.payload.quantity === 0) {
+        newItems = state.items.filter((item) => item.item_id !== action.payload.item_id);
+      } else {
+        newItems = state.items.map((item) => {
+          if(item.item_id === action.payload.item_id) {
+            return {...item, quantity: action.payload.quantity}
+          } else {
+            return item
+          }
+        });
+      }
       state.items = newItems;
+      const newTotal = newItems.reduce((total: number, item: cartItem) => {
+        return total + (item.quantity * Number(item.price));
+      }, 0);
+      state.cartTotal = newTotal;
     },
     clearCart: (state) => {
-      state = initialState;
+      state.items = [];
+      state.cartTotal = 0;
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,

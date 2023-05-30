@@ -20,6 +20,9 @@ function ProductProfileBox({ product, handleSelect, handleSubmit }: Props) {
         <Text mt="3" fontSize="xs" align="justify">
           {product.description}
         </Text>
+        <Text mt="3" fontSize="xs" align="justify">
+          {`$${product.price}`}
+        </Text>
 
         <Select
           placeholder="Select size and color options"

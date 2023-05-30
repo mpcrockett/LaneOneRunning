@@ -46,7 +46,7 @@ export type Product = {
   description: string,
   name: string, 
   gender: string,
-  price: string,
+  price: number,
   brand: string,
   subcategory_id: number,
   url: string

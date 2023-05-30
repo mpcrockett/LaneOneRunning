@@ -15,6 +15,7 @@ import ProductsPage, {
 } from "./pages/Products";
 import Product, { productLoader } from "./pages/Product";
 import AuthCallback from "./pages/AuthCallback";
+import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +26,8 @@ const router = createBrowserRouter(
       </Route>
       <Route path="account">
         <Route element={<Account />} index />
-        <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="checkout" element={<Checkout />} />
       </Route>
       <Route path="products">
         <Route element={<ProductsPage />} index loader={productsLoader} />

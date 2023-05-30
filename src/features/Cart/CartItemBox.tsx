@@ -9,6 +9,7 @@ interface Props {
 
 function CartItemBox(props: Props) {
   const { item, handleQuantityChange } = props;
+  const itemTotal = item.price * item.quantity;
 
   return (
     <Card
@@ -27,12 +28,16 @@ function CartItemBox(props: Props) {
           <Heading size="xs">{`${item.brand} ${item.name}`}</Heading>
           <Text fontSize="0.75rem">{`Size: ${item.size}`}</Text>
           <Text fontSize="0.75rem">{`Color: ${item.color}`}</Text>
+          <Text fontSize="0.75rem">{`$${itemTotal}`}</Text>
         </CardBody>
         <CardFooter>
           <Text fontSize="0.75rem" marginRight={"3"}>
             Quantity:
           </Text>
-          <ItemQuantityStepper default={item.quantity} onChangeHandler={handleQuantityChange} />
+          <ItemQuantityStepper
+            default={item.quantity}
+            onChangeHandler={handleQuantityChange}
+          />
         </CardFooter>
       </Stack>
     </Card>

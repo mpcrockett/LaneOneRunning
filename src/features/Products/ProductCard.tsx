@@ -37,7 +37,7 @@ function ProductsCard(props: Product) {
             {product.gender}
           </Text>
           <Text color="brand.teal.600" fontSize="xs">
-            {product.price}
+            {`$${product.price}`}
           </Text>
         </Stack>
       </CardBody>

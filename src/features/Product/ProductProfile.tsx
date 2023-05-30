@@ -24,7 +24,8 @@ function ProductProfile(props: ProductById) {
         size: item.size,
         color: item.color,
         quantity: 1,
-        url: product.url
+        url: product.url,
+        price: Number(product.price)
       }));
     }
   };
