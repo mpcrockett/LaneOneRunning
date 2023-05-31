@@ -11,11 +11,11 @@ export const validateAddressSchema = Yup.object().shape({
     .min(2, "Last name too short.")
     .max(50, "Input cannot be longer than 50 characters.")
     .required("Last name is required."),
-  street_address_1: Yup.string()
+  street_address_one: Yup.string()
     .min(2, "Last name too short.")
     .max(50, "Input cannot be longer than 50 characters.")
     .required("Address is required."),
-  street_address_2: Yup.string()
+  street_address_two: Yup.string()
     .min(2)
     .max(50, "Input cannot be longer than 50 characters."),
   city: Yup.string()

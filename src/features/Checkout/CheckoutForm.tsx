@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 import CheckoutFormBox from "./CheckoutFormBox";
-import { Box, Button, Center, Heading, Text } from "@chakra-ui/react";
-import CartItemBox from "../Cart/CartItemBox";
-import { updateQuantity } from "../../store/cartSlice";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import CartItem from "../Cart/CartItem";
 import NavButton from "../../components/NavButton";
+import axios, { AxiosError } from "axios";
+interface ErrorResponse {
+  message: string;
+}
 
 export type Address = {
   first_name?: string;
   last_name?: string;
-  street_address_1?: string;
-  street_address_2?: string;
+  street_address_one?: string;
+  street_address_two?: string;
   city?: string;
   state?: string;
   zipcode?: string;
@@ -22,10 +24,16 @@ function CheckoutForm() {
   const cartTotal = useAppSelector((state) => state.cart.cartTotal);
   const [address, setAddress] = useState<Address>({});
 
-  const handleSubmitForm = () => {
-    console.log(address);
-    console.log(items);
-    console.log("Submitted");
+  const handleSubmitForm = async () => {
+    try {
+      const res = await axios.post('/api/create-checkout-session', { items, address}, { withCredentials: true });
+      return window.location.href = res.data.url;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        alert(axiosError.message);
+      }
+    }
   };
 
   return (
@@ -71,7 +79,7 @@ function CheckoutForm() {
         <Box padding='5'>
           <NavButton
             label={"Continue to payment"}
-            clickHandler={() => console.log("clicked")}
+            clickHandler={handleSubmitForm}
           />
         </Box>
       </Box>

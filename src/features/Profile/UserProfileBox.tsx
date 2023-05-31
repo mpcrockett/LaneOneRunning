@@ -6,11 +6,12 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
-import { BsPerson } from "react-icons/bs";
+import { BsPerson, BsPersonFill } from "react-icons/bs";
 import { UserProfile } from "../../utils/Types";
 import UserProfileSkeleton from "./UserProfileSkeleton";
 import NavButton from "../../components/NavButton";
 import SideDrawer from "../../components/SideDrawer";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   handleLogOut: () => void;
@@ -19,8 +20,9 @@ interface Props {
 }
 
 function UserProfileBox(props: Props) {
+  const navigate = useNavigate();
   return (
-    <SideDrawer label={"Your Account"} icon={BsPerson}>
+    <SideDrawer label={"Your Account"} icon={props.user === null ? BsPerson: BsPersonFill}>
      { props.status === 'pending' ? <UserProfileSkeleton /> : <DrawerBody pt="50px">
         <Stack mb='15px'>
           <Text pt="2" fontSize="sm">
@@ -35,16 +37,9 @@ function UserProfileBox(props: Props) {
           <Box>
             <NavButton
               label={"Your Orders"}
-              clickHandler={() => console.log("clicked.")}
+              clickHandler={() => navigate('/account/orders')}
             />
           </Box>
-          <Box>
-            <NavButton
-              label={"Update Your Password"}
-              clickHandler={() => console.log("clicked.")}
-            />
-          </Box>
-
           <Button m={4} colorScheme="teal" variant="outline" onClick={props.handleLogOut}>
             Log Out
           </Button>

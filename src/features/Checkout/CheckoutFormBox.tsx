@@ -28,8 +28,8 @@ function CheckoutFormBox(props: Props) {
   const initialValues = {
     first_name: user.first_name || "",
     last_name: user.last_name || "",
-    street_address_1: "",
-    street_address_2: "",
+    street_address_one: "",
+    street_address_two: "",
     city: "",
     state: "",
     zipcode: "",
@@ -47,8 +47,10 @@ function CheckoutFormBox(props: Props) {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Box w="80%" padding="5">
+      <Box position="relative" top="5" left="-200">
         <BackButton />
+      </Box>
+      <Box w="80%" padding="5">
         <Formik
           initialValues={initialValues}
           validationSchema={validateAddressSchema}
@@ -98,35 +100,35 @@ function CheckoutFormBox(props: Props) {
                 </FormItemBox>
 
                 <FormItemBox>
-                  <FormControl isInvalid={!!props.errors.street_address_1}>
+                  <FormControl isInvalid={!!props.errors.street_address_one}>
                     <FormLabel>Street Address</FormLabel>
                     <Input
                       size="xs"
                       type="text"
-                      id="street_address_1"
-                      name="street_address_1"
+                      id="street_address_one"
+                      name="street_address_one"
                       onChange={props.handleChange}
-                      value={props.values.street_address_1}
+                      value={props.values.street_address_one}
                     />
                     <FormErrorMessage>
-                      {props.errors.street_address_1}
+                      {props.errors.street_address_one}
                     </FormErrorMessage>
                   </FormControl>
                 </FormItemBox>
 
                 <FormItemBox>
-                  <FormControl isInvalid={!!props.errors.street_address_2}>
+                  <FormControl isInvalid={!!props.errors.street_address_two}>
                     <FormLabel>Street Address 2</FormLabel>
                     <Input
                       size="xs"
                       type="text"
-                      id="street_address_2"
-                      name="street_address_2"
+                      id="street_address_two"
+                      name="street_address_two"
                       onChange={props.handleChange}
-                      value={props.values.street_address_2}
+                      value={props.values.street_address_two}
                     />
                     <FormErrorMessage>
-                      {props.errors.street_address_2}
+                      {props.errors.street_address_two}
                     </FormErrorMessage>
                   </FormControl>
                 </FormItemBox>
@@ -198,14 +200,14 @@ function CheckoutFormBox(props: Props) {
         display="flex"
         flexDirection="column"
         alignItems="left"
-        mb='5'
+        mb="5"
       >
         <Heading size="xs" alignSelf="center">
           Your Shipping Address
         </Heading>
         <Text fontSize="xs">{`${props.address?.first_name} ${props.address?.last_name}`}</Text>
-        <Text fontSize="xs">{props.address?.street_address_1}</Text>
-        <Text fontSize="xs">{props.address?.street_address_2}</Text>
+        <Text fontSize="xs">{props.address?.street_address_one}</Text>
+        <Text fontSize="xs">{props.address?.street_address_two}</Text>
         <Text fontSize="xs">{props.address?.city}</Text>
         <Text fontSize="xs">{props.address?.state}</Text>
         <Text fontSize="xs">{props.address?.zipcode}</Text>

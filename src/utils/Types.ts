@@ -67,3 +67,23 @@ export type Item = {
 export type ProductById = Product & {
   items?: Array<Item>
 }
+
+export type cartItem = {
+  item_id: number,
+  product_id: number,
+  name: string,
+  brand: string,
+  size: string,
+  color: string,
+  quantity: number
+  url: string,
+  price: number
+}
+
+export type OrderObject = {
+  order_id: number,
+  address_id: number,
+  items: Array<cartItem>
+}
+
+export type OrderData = Array<OrderObject>
