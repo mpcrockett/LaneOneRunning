@@ -1,4 +1,4 @@
-import { configureStore, ThunkAction, Action, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 import { 
   persistReducer, 
   FLUSH, 
@@ -19,18 +19,20 @@ const persistConfig = {
 };
 
 const combinedReducers = combineReducers({
-  user: userReducer, cart: cartReducer
+  user: userReducer,
+  cart: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-    },
-  })
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -7,9 +7,8 @@ interface Props {
 }
 
 function ProductsGrid(props: Props) {
-  const [isDesktop, isMobileScreen] = useMediaQuery([
+  const [isDesktop] = useMediaQuery([
     "(min-width: 1000px)",
-    "(max-width: 999px)",
   ]);
 
   return (

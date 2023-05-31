@@ -1,6 +1,6 @@
 import { Card, Image, Stack, CardBody, Heading, Text, CardFooter } from "@chakra-ui/react";
 import ItemQuantityStepper from "../../components/ItemQuantityStepper";
-import { cartItem } from "../../store/cartSlice";
+import { cartItem } from "../../utils/Types";
 
 interface Props {
   item: cartItem;

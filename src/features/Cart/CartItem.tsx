@@ -1,7 +1,7 @@
-import { cartItem, updateQuantity } from '../../store/cartSlice';
+import { updateQuantity } from '../../store/cartSlice';
 import { useAppDispatch } from '../../store/hooks';
+import { cartItem } from '../../utils/Types';
 import CartItemBox from './CartItemBox';
-
 interface Props {
   item: cartItem
 }
@@ -10,7 +10,7 @@ function CartItem(props: Props) {
   const dispatch = useAppDispatch();
 
   const handleQuantityChange = (
-      valueAsString: string,
+      _valueAsString: string,
       valueAsNumber: number
     ) => {
     dispatch(

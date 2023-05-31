@@ -1,5 +1,4 @@
 import Cart from "../Cart/Cart";
-import Search from "./Search";
 import AccountButton from "../Account/AccountButton";
 import FlexBoxSpaceBtwn from "../../components/FlexBoxSpaceBtwn";
 import NavButton from "../../components/NavButton";
@@ -39,7 +38,6 @@ function NavBar(props: Props) {
         <NavButton label="About" clickHandler={() => console.log("about")} />
         <NavButton label="Contact" clickHandler={() => console.log("contact")} />
         <FlexBoxSpaceBtwn>
-          <Search />
           {loggedIn ? <UserProfile /> : <AccountButton />}
           <Cart />
         </FlexBoxSpaceBtwn>
