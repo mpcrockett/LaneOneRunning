@@ -24,7 +24,7 @@ function SideDrawer(props: Props) {
           />
         </div>
       </Center>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+      <Drawer size='lg' isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg="brand.cream.50">
           <DrawerCloseButton variant="ghost" />
