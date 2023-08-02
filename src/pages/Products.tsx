@@ -1,7 +1,6 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { Products } from "../utils/Types";
 import { getProducts, getProductsByCategory, getProductsByGender, getProductsBySubcategory } from "../utils/api";
-// import Menu from "../features/Menu/Menu";
 import ProductsGrid from "../features/Products/ProductsGrid";
 import Breadcrumbs from "../components/Breadcrumbs";
 import NavBar from "../features/NavBar/NavBar";

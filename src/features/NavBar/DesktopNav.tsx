@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
-import { Collapse, Flex, Image, Link, Stack, useColorModeValue, Box, Text, useOutsideClick } from "@chakra-ui/react";
+import { Collapse, Flex, Link, Stack, useColorModeValue, Box, Text, useOutsideClick } from "@chakra-ui/react";
 import NavLink from "./NavLink";
-import logo from "../../assets/1.png";
 import Cart from "../Cart/Cart";
 import UserProfile from "../Profile/UserProfile";
 import { Category, NavData } from "../../utils/Types";
@@ -27,7 +26,6 @@ function DesktopNav(props: Props) {
 
 	return (
 		<Flex direction='column' align='center' justify='center' ref={ref} w={'100%'}>
-			{/* <Image src={logo} alt='Lane One Running' w='300px' /> */}
 			<Stack direction={"row"} spacing={40}>
 				{navItems.map((navItem) => (
 					<NavLink key={navItem.label} navItem={navItem} clickHandler={handleLinkClick} selected={selectedNavLink} />
