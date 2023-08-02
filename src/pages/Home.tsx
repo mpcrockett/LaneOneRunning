@@ -1,12 +1,12 @@
-import Menu from "../features/Menu/Menu"
 import BackgroundBox from "../components/BackgroundBox";
+import NavBar from "../features/NavBar/NavBar";
 
 function Home() {
   return (
     <BackgroundBox>
-      <Menu />
+      <NavBar />
     </BackgroundBox>
   );
-};
+}
 
 export default Home

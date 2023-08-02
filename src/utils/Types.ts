@@ -35,11 +35,10 @@ export type Category = {
   slug: string
 }
 
-export type CategoryEnum = 'shoes' | 'bottoms' | 'tops' | 'accessories';
-
-export type Gender = Record<string, Category[]>
-
-export type ProductData = Record<string, Gender>;
+export interface NavData {
+	label: string;
+	children?: Array<Category>;
+}
 
 export type Product = {
   product_id: number,

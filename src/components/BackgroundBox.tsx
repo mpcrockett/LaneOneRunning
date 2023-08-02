@@ -8,7 +8,7 @@ interface Props {
 function BackgroundBox(props: Props) {
   return (
     <Box
-      height='100vh'
+      height='200vh'
       backgroundImage={trackPic}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"

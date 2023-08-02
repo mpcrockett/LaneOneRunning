@@ -1,4 +1,4 @@
-import Menu from "../features/Menu/Menu";
+// import Menu from "../features/Menu/Menu";
 import { LoaderFunctionArgs, useLoaderData, useParams } from "react-router-dom";
 import { getProductById } from "../utils/api";
 import { ProductById } from "../utils/Types";
@@ -19,7 +19,7 @@ function Product() {
 
   return (
     <>
-      <Menu />
+      {/* <Menu /> */}
       <Breadcrumbs />
       <ProductProfile {...data} />
     </>

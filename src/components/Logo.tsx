@@ -4,7 +4,7 @@ import logo from "../assets/1.png";
 function Logo() {
   return (
     <Center width="minContent">
-      <Image boxSize="250px" src={logo} alt="logo" bg="brand.cream.50" />
+      <Image w={[100, 200, 300]} src={logo} alt="logo" bg="brand.cream.50" />
     </Center>
   );
 }

@@ -19,9 +19,9 @@ function ProductsCard(props: Product) {
   };
 
   return (
-    <Card maxW="sm" maxH="md" bg="brand.cream.50" onClick={handleButtonClick}>
+    <Card maxW={["md", "lg"]} maxH="md" bg="brand.cream.50" onClick={handleButtonClick}>
       <CardBody alignItems="center">
-        <Box height="150px" width="100%">
+        <Box height={["150px", "250px"]} width="100%">
           <Image
             height="100%"
             width="100%"

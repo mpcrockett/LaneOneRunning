@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ProductData } from "../utils/Types";
 import axios, { AxiosError } from "axios";
+import { NavData } from "../utils/Types";
 
 interface ErrorResponse {
   message: string
@@ -8,7 +8,7 @@ interface ErrorResponse {
 
 const useCategories = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<ProductData | null>(null);
+  const [data, setData] = useState<NavData[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

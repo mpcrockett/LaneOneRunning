@@ -1,17 +1,18 @@
 import { Box } from '@chakra-ui/react'
 
 interface Props {
-  width?: string,
-  bg?: string,
-  children: React.ReactNode
-  alignItems?: string
+  width?: string;
+  bg?: string;
+  children: React.ReactNode;
+  alignItems?: string;
+  direction?: string;
 }
 
 function FlexBoxSpaceBtwn(props: Props) {
   return (
     <Box
         display="flex"
-        flexDirection={"row"}
+        flexDirection={props?.direction === "column" ? "column" : "row"}
         width={props?.width}
         justifyContent={"space-around"}
         bg={props?.bg}

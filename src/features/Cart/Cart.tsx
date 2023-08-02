@@ -22,7 +22,7 @@ function Cart() {
   const freeShipping = cartTotal > 75;
 
   return (
-    <SideDrawer label={"Your Cart"} icon={!isEmpty ? IoBag : IoBagOutline}>
+    <SideDrawer label={"Your Cart"} icon={!isEmpty ? IoBag : IoBagOutline} aria-label={"Cart"}>
       <DrawerBody>
         {!isEmpty &&
           items.map((item) => {

@@ -1,4 +1,4 @@
-import { Center, Drawer, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Icon, useDisclosure } from "@chakra-ui/react";
+import { Drawer, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Icon, useDisclosure } from "@chakra-ui/react";
 import { useRef } from "react";
 import { IconType } from "react-icons";
 
@@ -14,27 +14,24 @@ function SideDrawer(props: Props) {
 
   return (
     <>
-      <Center width="16px" height="16px" m="10px">
-        <div ref={btnRef}>
-          <Icon
-            as={props.icon}
-            boxSize={6}
-            onClick={onOpen}
-            color="brand.gray.900"
-          />
-        </div>
-      </Center>
+      <div ref={btnRef}>
+        <Icon
+          as={props.icon}
+          boxSize={6}
+          onClick={onOpen}
+          color="brand.gray.900"
+        />
+      </div>
       <Drawer size='lg' isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg="brand.cream.50">
           <DrawerCloseButton variant="ghost" />
-            <DrawerHeader
-              fontFamily={`'Playfair Display', serif`}
-              fontSize="lg"
-              fontWeight="400"
-            >
-              Your Account
-            </DrawerHeader>
+          <DrawerHeader
+            fontFamily={`'Playfair Display', serif`}
+            fontSize="lg"
+            fontWeight="400"
+          >
+          </DrawerHeader>
           {props.children}
         </DrawerContent>
       </Drawer>
